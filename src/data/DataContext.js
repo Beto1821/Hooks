@@ -6,3 +6,5 @@ export const data = {
 }
 
 export const DataContext = React.createContext(data);
+
+export default DataContext
