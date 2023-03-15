@@ -5,11 +5,11 @@ import DataContext from '../../data/DataContext'
 
 const UseContext = (props) => {
 
-    const context = useContext(DataContext)
+    const {state, setState} = useContext(DataContext)
 
     function setNumber(n) {
-        context.setState({
-            ...context.state,
+        setState({
+            ...state,
             number: n
         })
     }
@@ -21,14 +21,14 @@ const UseContext = (props) => {
                 subtitle="Aceita um objeto de contexto e retorna o valor atual do contexto!"
             />
             <div className="center">
-                <span className="text">{context.state.text}</span>
-                <span className="text">{context.state.number}</span>
+                <span className="text">{state.text}</span>
+                <span className="text">{state.number}</span>
             </div>
             <div>
                 <button className="btn" 
-                onClick={() => setNumber(context.state.number - 1)}>-1</button>
+                onClick={() => setNumber(state.number - 1)}>-1</button>
                 <button className="btn" 
-                onClick={() => setNumber(context.state.number + 1)}>+1</button>
+                onClick={() => setNumber(state.number + 1)}>+1</button>
             </div>
         </div>
     )
