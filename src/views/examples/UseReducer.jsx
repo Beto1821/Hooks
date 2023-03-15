@@ -1,23 +1,8 @@
 import React, { useReducer } from 'react'
 import PageTitle from '../../components/layout/PageTitle'
 
-const initialState = {
-    cart: [],
-    products: [],
-    user: null,
-    number: 0
-}
-
-function reducer(state, action) {
-    switch(action.type) {
-        case 'numberAdd2':
-            return {...state, number: state.number + 2}
-        case 'login':
-            return {...state, user: { name: action.name}}
-        default:
-            return state
-    }
-}
+import { initialState, reducer } from '../../store'
+import { numberAdd2, login } from '../../store/actions'
 
 const UseReducer = (props) => {
     const [state, dispatch] = useReducer(reducer , initialState)
@@ -37,15 +22,30 @@ const UseReducer = (props) => {
                 <span className="text">{state.number}</span>
                 <div>
                     <button className="btn" 
-                        onClick={() => dispatch({ type: 'login', name: 'Beto'})}
+                        onClick={() => login(dispatch, 'Maria')}
                         >
                         Login
                     </button>
                     <button className="btn"
-                        onClick={() => dispatch({ type: 'numberAdd2' })}
+                        onClick={() => numberAdd2(dispatch)}
                         >
                         +2
                     </button>
+                    <button className="btn"
+                        onClick={() => dispatch({ type: 'numberMult7' })}
+                        >
+                        x7
+                    </button>
+                    <button className="btn"
+                        onClick={() => dispatch({ type: 'numberDiv25' })}
+                        >
+                        /25
+                    </button> 
+                    <button className="btn"
+                        onClick={() => dispatch({ type: 'numberInt' })}
+                        >
+                        Int
+                    </button>                                                                  
                 </div>
             </div>
         </div>
